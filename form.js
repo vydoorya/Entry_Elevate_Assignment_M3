@@ -140,9 +140,11 @@ function validateMessage(){
 
 
 function validateForm(){
-    if(!validateName() || !validateEmail() || !validateNumber() || 
-    !validateCity() || !selectValidation() || !validateAddress() || 
-    !validateMessage()){
+    if(!validateName() || !validateEmail() ||
+     !validatePassword() || validateConform() || 
+     !validateNumber() || !validateCity() || 
+     !selectValidation() || !validateAddress() || 
+     !validateMessage()){
         return false
     }
 
@@ -175,15 +177,41 @@ function validatePassword(){
     let password = document.getElementById('password').value;
     let passError = document.getElementById('pass-error');
 
+    let regEx =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
     if(password.trim() === ''){
         passError.innerHTML ='*pasword can not be blank';
         return false;
+    }
+    else if (!password.match(regEx)){
+        passError.innerHTML = 'Password can not strong Add A-Z,a-z,number and sings <8 characters'
+        return false
     }
     else{
         passError.innerHTML = '';
         return true;
     }
 }
+
+function validateConform(){
+    let password = document.getElementById('password')
+    let confirmPassword = document.getElementById('cnfm-password')
+    let confirmError = document.getElementById('cnfrm-error')
+
+    if (password.value != confirmPassword.value){
+        confirmError.innerHTML = 'Password mismatch'
+        return false
+    }
+    else {
+        confirmError.innerHTML =''
+        return true
+    }
+}
+
+
+
+
+
+
 
 function loginValidate(){
     if(!validatePassword() || !validateUsername()){
