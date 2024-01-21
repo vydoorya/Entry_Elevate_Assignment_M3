@@ -140,11 +140,7 @@ function validateMessage(){
 
 
 function validateForm(){
-    if(!validateName() || !validateEmail() ||
-     !validatePassword() || validateConform() || 
-     !validateNumber() || !validateCity() || 
-     !selectValidation() || !validateAddress() || 
-     !validateMessage()){
+    if(!validateName() || !validateEmail() || !validatePassword() || !validateConform() || !validateNumber() || !validateCity() || !selectValidation() || !validateAddress() || !validateMessage()){
         return false
     }
 
@@ -206,9 +202,6 @@ function validateConform(){
         return true
     }
 }
-
-
-
 
 
 
